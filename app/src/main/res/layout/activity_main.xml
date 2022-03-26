@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="@dimen/padding_normal"
+    android:padding="@dimen/padding_normal"
     tools:context=".MainActivity">
 
     <ImageView
@@ -15,7 +15,7 @@
         app:layout_constraintBottom_toBottomOf="@id/barrierContent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@sample/posts_avatars" />
+        app:srcCompat="@drawable/ic_post_avatar" />
 
     <TextView
         android:id="@+id/author"
@@ -53,7 +53,7 @@
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@drawable/ic_baseline_more_vert_24dp" />
+        app:srcCompat="@drawable/ic_menu_24dp" />
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/barrierContent"
@@ -70,14 +70,16 @@
         app:layout_constraintTop_toBottomOf="@id/barrierContent"
         tools:text="@sample/posts.json/data/content" />
 
-    <ImageView
+    <ImageButton
         android:id="@+id/likeIcon"
         android:layout_width="@dimen/icon_size"
         android:layout_height="@dimen/icon_size"
         android:layout_marginTop="@dimen/padding_normal"
+        android:background="@android:color/transparent"
         android:contentDescription="@string/description_likes_icon"
+        android:scaleType="center"
         app:layout_constraintTop_toBottomOf="@id/content"
-        tools:srcCompat="@drawable/ic_outline_favorite_border_24dp" />
+        app:srcCompat="@drawable/ic_like_24dp" />
 
     <TextView
         android:id="@+id/likesCount"
@@ -90,16 +92,17 @@
         app:layout_constraintTop_toBottomOf="@id/content"
         tools:text="@sample/posts.json/data/likes" />
 
-    <ImageView
+    <ImageButton
         android:id="@+id/shareIcon"
         android:layout_width="@dimen/icon_size"
         android:layout_height="@dimen/icon_size"
         android:layout_marginStart="@dimen/padding_normal"
         android:layout_marginTop="@dimen/padding_normal"
+        android:background="@android:color/transparent"
         android:contentDescription="@string/description_share_icon"
         app:layout_constraintStart_toEndOf="@id/likesCount"
         app:layout_constraintTop_toBottomOf="@id/content"
-        tools:srcCompat="@drawable/ic_baseline_share_24dp" />
+        app:srcCompat="@drawable/ic_share_24dp" />
 
     <TextView
         android:id="@+id/shareCount"
@@ -132,7 +135,7 @@
         android:contentDescription="@string/description_watches_icon"
         app:layout_constraintEnd_toStartOf="@id/watchesCount"
         app:layout_constraintTop_toBottomOf="@id/content"
-        tools:srcCompat="@drawable/ic_baseline_remove_red_eye_24dp" />
+        app:srcCompat="@drawable/ic_watches_24dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
