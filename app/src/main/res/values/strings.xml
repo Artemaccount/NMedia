@@ -6,4 +6,7 @@
     <string name="description_likes_icon">Likes</string>
     <string name="description_watches_icon">Watches</string>
     <string name="description_share_icon">Shares</string>
+    <string name="remove_post_action">Remove</string>
+    <string name="post_content">Post content</string>
+    <string name="edit_post_action">Edit content</string>
 </resources>

@@ -7,4 +7,7 @@
     <string name="description_likes_icon">Лайки</string>
     <string name="description_watches_icon">Просмотры</string>
     <string name="description_share_icon">Поделились</string>
+    <string name="remove_post_action">Удалить</string>
+    <string name="post_content">Содержание поста</string>
+    <string name="edit_post_action">Редактировать</string>
 </resources>
