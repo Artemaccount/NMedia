@@ -1,6 +1,5 @@
 package ru.netology.nmedia.adapter
 
-import android.system.Os.remove
 import android.widget.PopupMenu
 import androidx.recyclerview.widget.RecyclerView
 import ru.netology.nmedia.R

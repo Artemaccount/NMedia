@@ -27,14 +27,6 @@ class PostViewModel : ViewModel(), PostInteractionListener {
     }
 
 
-    private fun emptyPost() = Post(
-        id = 0L,
-        author = "",
-        content = "",
-        published = "",
-        likedByMe = false
-    )
-
 
     //region PostInteractionListener implementation
 

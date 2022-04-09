@@ -1,6 +1,7 @@
 package ru.netology.nmedia
 
 import android.os.Bundle
+import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import ru.netology.nmedia.adapter.PostsAdapter
@@ -24,19 +25,33 @@ class MainActivity : AppCompatActivity() {
             adapter.submitList(posts)
         }
 
-        viewModel.editPost.observe(this){ post: Post? ->
+        viewModel.editPost.observe(this) { post: Post? ->
             val content = post?.content ?: ""
-             binding.editTextField.setText(content)
+            with(binding) {
+                editTextField.setText(content)
+                if (viewModel.editPost.value == null) editingGroup.visibility = View.GONE
+                else editingGroup.visibility = View.VISIBLE
+                editingView.setText(post?.author)
+            }
         }
 
-        binding.saveButton.setOnClickListener {
-            with(binding.editTextField) {
-                val content = text.toString()
-                viewModel.onSaveButtonClicked(content)
+        binding.cancelEditingButton.setOnClickListener {
+            with(binding) {
+                editTextField.setText("")
+                editTextField.clearFocus()
+                editTextField.hideKeyBoard()
+                editingGroup.visibility = View.GONE
+            }
+        }
 
-                setText("")
-                clearFocus()
-                hideKeyBoard()
+
+        binding.saveButton.setOnClickListener {
+            with(binding) {
+                val content = editTextField.text.toString()
+                viewModel.onSaveButtonClicked(content)
+                editTextField.setText("")
+                editTextField.clearFocus()
+                editTextField.hideKeyBoard()
             }
 
         }
