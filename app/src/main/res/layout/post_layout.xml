@@ -2,9 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:padding="@dimen/padding_normal"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:padding="@dimen/padding_normal">
 
     <ImageView
         android:id="@+id/avatar"
@@ -69,71 +69,50 @@
         app:layout_constraintTop_toBottomOf="@id/barrierContent"
         tools:text="@sample/posts.json/data/content" />
 
-    <ImageButton
-        android:id="@+id/likeIcon"
-        android:layout_width="@dimen/icon_size"
-        android:layout_height="@dimen/icon_size"
-        android:layout_marginTop="@dimen/padding_normal"
-        android:background="@android:color/transparent"
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/like"
+        android:fontFamily="sans-serif"
+        style="@style/Widget.AppTheme.LikeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checkable="true"
         android:contentDescription="@string/description_likes_icon"
         android:scaleType="center"
+        app:icon="@drawable/ic_likes_24dp"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/content"
-        app:srcCompat="@drawable/ic_like_24dp" />
-
-    <TextView
-        android:id="@+id/likesCount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/padding_normal"
-        android:layout_marginTop="@dimen/padding_normal"
-        app:layout_constraintBottom_toBottomOf="@id/likeIcon"
-        app:layout_constraintStart_toEndOf="@id/likeIcon"
-        app:layout_constraintTop_toBottomOf="@id/content"
+        tools:checked="true"
         tools:text="@sample/posts.json/data/likes" />
 
-    <ImageButton
-        android:id="@+id/shareIcon"
-        android:layout_width="@dimen/icon_size"
-        android:layout_height="@dimen/icon_size"
-        android:layout_marginStart="@dimen/padding_normal"
-        android:layout_marginTop="@dimen/padding_normal"
-        android:background="@android:color/transparent"
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/share"
+        style="@style/Widget.AppTheme.ShareButton"
+        android:fontFamily="sans-serif"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:contentDescription="@string/description_share_icon"
-        app:layout_constraintStart_toEndOf="@id/likesCount"
+        android:scaleType="center"
+        app:icon="@drawable/ic_share_24dp"
+        app:layout_constraintStart_toEndOf="@id/like"
         app:layout_constraintTop_toBottomOf="@id/content"
-        app:srcCompat="@drawable/ic_share_24dp" />
+        tools:checked="true"
 
-    <TextView
-        android:id="@+id/shareCount"
+        tools:text="@sample/posts.json/data/likes" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/watches"
+        android:fontFamily="sans-serif"
+        style="@style/Widget.AppTheme.ShareButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/padding_normal"
-        android:layout_marginTop="@dimen/padding_normal"
-        app:layout_constraintBottom_toBottomOf="@id/shareIcon"
-        app:layout_constraintStart_toEndOf="@id/shareIcon"
-        app:layout_constraintTop_toBottomOf="@id/content"
-        tools:text="@sample/posts.json/data/reposts" />
-
-    <TextView
-        android:id="@+id/watchesCount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/padding_normal"
-        app:layout_constraintBottom_toBottomOf="@id/watchIcon"
+        android:clickable="false"
+        android:contentDescription="@string/description_watches_icon"
+        android:scaleType="center"
+        app:icon="@drawable/ic_watches_24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/content"
-        tools:text="@sample/posts.json/data/watches" />
-
-    <ImageView
-        android:id="@+id/watchIcon"
-        android:layout_width="@dimen/icon_size"
-        android:layout_height="@dimen/icon_size"
-        android:layout_marginStart="@dimen/padding_normal"
-        android:layout_marginTop="@dimen/padding_normal"
-        android:layout_marginEnd="@dimen/padding_normal"
-        android:contentDescription="@string/description_watches_icon"
-        app:layout_constraintEnd_toStartOf="@id/watchesCount"
-        app:layout_constraintTop_toBottomOf="@id/content"
-        app:srcCompat="@drawable/ic_watches_24dp" />
+        tools:checked="true"
+        tools:text="@sample/posts.json/data/likes" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

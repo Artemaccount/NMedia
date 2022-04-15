@@ -34,10 +34,10 @@ class PostViewHolder(
     }
 
     init {
-        binding.likeIcon.setOnClickListener {
+        binding.like.setOnClickListener {
             listener.onLike(post)
         }
-        binding.shareIcon.setOnClickListener {
+        binding.share.setOnClickListener {
             listener.onShare(post)
         }
         binding.menu.setOnClickListener {
@@ -51,12 +51,10 @@ class PostViewHolder(
             author.text = post.author
             published.text = post.published
             content.text = post.content
-            likesCount.text = Utils.getWordFromInt(post.likes)
-            shareCount.text = Utils.getWordFromInt(post.reposts)
-            watchesCount.text = Utils.getWordFromInt(post.watches)
-            likeIcon.setImageResource(
-                if (post.likedByMe) R.drawable.ic_liked_24dp else R.drawable.ic_like_24dp
-            )
+            like.text = Utils.getWordFromInt(post.likes)
+            share.text = Utils.getWordFromInt(post.reposts)
+            watches.text = Utils.getWordFromInt(post.watches)
+            like.isChecked = post.likedByMe
         }
     }
 }
