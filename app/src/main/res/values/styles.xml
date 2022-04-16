@@ -15,4 +15,11 @@
         <item name="minHeight">@dimen/min_size</item>
         <item name="android:textColor">@color/dark_grey</item>
     </style>
+
+    <style name="Widget.AppTheme.MenuButton" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="background">?attr/colorControlNormal</item>
+        <item name="iconTint">?attr/colorControlNormal</item>
+        <item name="android:layout_width">@dimen/menu_min_size</item>
+        <item name="android:layout_height">@dimen/menu_min_size</item>
+    </style>
 </resources>

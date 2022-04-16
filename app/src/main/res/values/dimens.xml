@@ -4,4 +4,5 @@
     <dimen name="icon_size">24dp</dimen>
     <dimen name="padding_normal">16dp</dimen>
     <dimen name="min_size">16dp</dimen>
+    <dimen name="menu_min_size">48dp</dimen>
 </resources>

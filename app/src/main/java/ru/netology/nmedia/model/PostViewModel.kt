@@ -27,7 +27,6 @@ class PostViewModel : ViewModel(), PostInteractionListener {
     }
 
 
-
     //region PostInteractionListener implementation
 
 
