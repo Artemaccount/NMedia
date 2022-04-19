@@ -12,4 +12,5 @@
     <string name="chooser_share_post">Share post</string>
     <string name="ok_button">ok button</string>
     <string name="add_button">Add button</string>
+    <string name="enter_video_url">enter video url</string>
 </resources>

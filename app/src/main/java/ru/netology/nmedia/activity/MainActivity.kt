@@ -1,7 +1,7 @@
 package ru.netology.nmedia.activity
 
-import android.app.Activity
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.activity.result.launch
 import androidx.activity.viewModels
@@ -35,32 +35,40 @@ class MainActivity : AppCompatActivity() {
             startActivity(shareIntent)
         }
 
+        viewModel.navigateToVideoScreen.observe(this) { videoContent ->
+            if (!videoContent.isNullOrEmpty()) {
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(videoContent))
+                startActivity(intent)
+            }
+        }
+
+
         val editPostLauncher =
             registerForActivityResult(EditPostActivity.ResultContract) { editPostContent ->
                 editPostContent ?: return@registerForActivityResult
-                viewModel.editContent(editPostContent)
+                viewModel.changeContent(editPostContent)
             }
 
-        viewModel.navigateToEditPostScreen.observe(this) { postContent ->
+        viewModel.navigateToEditPostScreen.observe(this)
+        { postContent ->
             editPostLauncher.launch(postContent)
         }
 
         val newPostLauncher =
             registerForActivityResult(NewPostActivity.ResultContract) { newPostContent ->
                 newPostContent ?: return@registerForActivityResult
-                viewModel.changeContent(newPostContent)
+                newPostContent.first?.let { viewModel.changeContent(newPostContent) }
                 viewModel.save()
             }
 
 
-        viewModel.navigateToNewPostScreen.observe(this) { postContent ->
+        viewModel.navigateToNewPostScreen.observe(this)
+        { postContent ->
             newPostLauncher.launch()
         }
 
-        binding.fab.setOnClickListener {
-            viewModel.onnAddNewPostButtonClicked()
-        }
 
+        binding.fab.setOnClickListener { viewModel.onnAddNewPostButtonClicked() }
 
     }
 }

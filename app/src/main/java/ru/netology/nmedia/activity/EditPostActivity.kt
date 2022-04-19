@@ -23,34 +23,45 @@ class EditPostActivity : AppCompatActivity() {
         binding.editField.requestFocus()
 
         binding.ok.setOnClickListener {
-            onOkButtonClicked(binding.editField.text)
+            onOkButtonClicked(binding.editField.text, binding.videoUrl.text)
         }
     }
 
-    private fun onOkButtonClicked(text: Editable) {
+    private fun onOkButtonClicked(text: Editable, videoUrl: Editable) {
         val intent = Intent()
         if (text.isBlank()) {
             setResult(Activity.RESULT_CANCELED, intent)
         } else {
             val newPostContent = text.toString()
-            intent.putExtra(CONTENT_KEY, newPostContent)
+            val videoUrlString = videoUrl.toString()
+            intent.putExtra(NewPostActivity.NEW_POST_CONTENT_KEY, newPostContent)
+            intent.putExtra(NewPostActivity.VIDEO_URL_KEY, videoUrlString)
             setResult(Activity.RESULT_OK, intent)
         }
         finish()
     }
 
-    object ResultContract : ActivityResultContract<String, String?>() {
+    object ResultContract : ActivityResultContract<String, Pair<String?, String?>>() {
 
         override fun createIntent(context: Context, input: String) =
             Intent(context, EditPostActivity::class.java).putExtra(CONTENT_KEY, input)
 
-        override fun parseResult(resultCode: Int, intent: Intent?) =
-            intent.takeIf { resultCode == Activity.RESULT_OK }?.getStringExtra(CONTENT_KEY)
-
-
+        override fun parseResult(resultCode: Int, intent: Intent?): Pair<String?, String?> {
+            var postPair: Pair<String?, String?> = Pair(null, null)
+            if (resultCode == Activity.RESULT_OK) {
+                val text = intent?.getStringExtra(NEW_POST_CONTENT_KEY)
+                val video = intent?.getStringExtra(VIDEO_URL_KEY)
+                postPair = text to video
+                return postPair
+            } else {
+                return postPair
+            }
+        }
     }
 
-    private companion object {
+    companion object {
         const val CONTENT_KEY = "content"
+        const val NEW_POST_CONTENT_KEY = "newPostContent"
+        const val VIDEO_URL_KEY = "videoUrlContent"
     }
 }

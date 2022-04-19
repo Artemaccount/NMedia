@@ -13,4 +13,5 @@
     <string name="chooser_share_post">Поделиться</string>
     <string name="ok_button">Кнопка окей</string>
     <string name="add_button">Кнопка добавить</string>
+    <string name="enter_video_url">Введите ссылку видео</string>
 </resources>

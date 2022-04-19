@@ -43,6 +43,9 @@ class PostViewHolder(
         binding.menu.setOnClickListener {
             popupMenu.show()
         }
+        binding.videoBox.setOnClickListener {
+            listener.onVideo(post)
+        }
     }
 
     fun bind(post: Post) {

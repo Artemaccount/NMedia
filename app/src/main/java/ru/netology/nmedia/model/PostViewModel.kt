@@ -1,11 +1,7 @@
 package ru.netology.nmedia.model
 
-import android.app.Activity
-import android.content.Intent
-import android.text.Editable
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import ru.netology.nmedia.activity.EditPostActivity
 import ru.netology.nmedia.adapter.PostInteractionListener
 import ru.netology.nmedia.dto.Post
 import ru.netology.nmedia.repository.PostRepository
@@ -22,7 +18,8 @@ class PostViewModel : ViewModel(), PostInteractionListener {
         author = "",
         content = "",
         published = "",
-        likedByMe = false
+        likedByMe = false,
+        video = ""
     )
 
     private val empty = Post(
@@ -30,7 +27,8 @@ class PostViewModel : ViewModel(), PostInteractionListener {
         author = "",
         content = "",
         published = "",
-        likedByMe = false
+        likedByMe = false,
+        video = ""
     )
 
     private val edited = MutableLiveData(empty)
@@ -38,6 +36,7 @@ class PostViewModel : ViewModel(), PostInteractionListener {
     val shareEvent = SingleLiveEvent<String>()
     val navigateToNewPostScreen = SingleLiveEvent<String>()
     val navigateToEditPostScreen = SingleLiveEvent<String>()
+    val navigateToVideoScreen = SingleLiveEvent<String>()
 
 
     fun save() {
@@ -48,22 +47,20 @@ class PostViewModel : ViewModel(), PostInteractionListener {
         this.edited.value = empty
     }
 
-    fun editContent(content: String) {
-        val text = content.trim()
-        if (edited.value?.content == text) {
+    fun changeContent(content: Pair<String?, String?>) {
+        val textContent = content.first
+        val videoContent = content.second
+        if (edited.value?.content == textContent) {
             return
         }
-        editedPost = editedPost.copy(content = content)
+        if (textContent != null) {
+            editedPost = editedPost.copy(content = textContent)
+        }
+        if (videoContent != null) {
+            editedPost = editedPost.copy(video = videoContent)
+        }
         repository.save(editedPost)
         this.editedPost = empty
-    }
-
-    fun changeContent(content: String) {
-        val text = content.trim()
-        if (edited.value?.content == text) {
-            return
-        }
-        edited.value = edited.value?.copy(content = content)
     }
 
     fun onnAddNewPostButtonClicked() {
@@ -90,6 +87,10 @@ class PostViewModel : ViewModel(), PostInteractionListener {
     override fun onEdit(post: Post) {
         navigateToEditPostScreen.value = post.content
         editedPost = post
+    }
+
+    override fun onVideo(post: Post) {
+        navigateToVideoScreen.value = post.video
     }
 
     //endregion PostInteractionListener
