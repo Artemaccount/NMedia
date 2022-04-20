@@ -9,4 +9,8 @@
     <string name="remove_post_action">Remove</string>
     <string name="post_content">Post content</string>
     <string name="edit_post_action">Edit content</string>
+    <string name="chooser_share_post">Share post</string>
+    <string name="ok_button">ok button</string>
+    <string name="add_button">Add button</string>
+    <string name="enter_video_url">enter video url</string>
 </resources>

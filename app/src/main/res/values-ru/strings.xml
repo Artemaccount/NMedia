@@ -10,4 +10,8 @@
     <string name="remove_post_action">Удалить</string>
     <string name="post_content">Содержание поста</string>
     <string name="edit_post_action">Редактировать</string>
+    <string name="chooser_share_post">Поделиться</string>
+    <string name="ok_button">Кнопка окей</string>
+    <string name="add_button">Кнопка добавить</string>
+    <string name="enter_video_url">Введите ссылку видео</string>
 </resources>

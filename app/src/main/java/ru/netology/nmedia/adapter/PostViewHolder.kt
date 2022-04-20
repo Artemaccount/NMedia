@@ -23,7 +23,7 @@ class PostViewHolder(
                         listener.onRemove(post)
                         true
                     }
-                    R.id.edit -> {
+                    R.id.editButton -> {
                         listener.onEdit(post)
                         true
                     }
@@ -42,6 +42,9 @@ class PostViewHolder(
         }
         binding.menu.setOnClickListener {
             popupMenu.show()
+        }
+        binding.videoBox.setOnClickListener {
+            listener.onVideo(post)
         }
     }
 
