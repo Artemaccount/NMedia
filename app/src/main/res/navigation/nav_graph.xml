@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/feedFragment">
+
+    <fragment
+        android:id="@+id/feedFragment"
+        android:name="ru.netology.nmedia.activity.FeedFragment"
+        tools:layout="@layout/feed_fragment">
+        <action
+            android:id="@+id/toNewPostFragment"
+            app:destination="@id/newPostFragment" />
+        <action
+            android:id="@+id/toEditPostFragment"
+            app:destination="@id/editPostFragment" />
+        <action
+            android:id="@+id/toPostFragment"
+            app:destination="@id/postFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/postFragment"
+        android:name="ru.netology.nmedia.activity.PostFragment"
+        tools:layout="@layout/post_layout">
+
+        <action
+            android:id="@+id/toEditPostFragment"
+            app:destination="@id/editPostFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/editPostFragment"
+        android:name="ru.netology.nmedia.activity.EditPostFragment"
+        tools:layout="@layout/new_post_fragment">
+    <action
+        android:id="@+id/toFeedFragment"
+        app:destination="@id/feedFragment" />
+
+</fragment>
+
+    <action
+        android:id="@+id/globalToEditPostFragment"
+        app:destination="@id/editPostFragment" />
+
+
+    <fragment
+
+        android:id="@+id/newPostFragment"
+        android:name="ru.netology.nmedia.activity.NewPostFragment"
+        tools:layout="@layout/new_post_fragment" />
+    <action
+        android:id="@+id/globalToNewPostFragment"
+        app:destination="@id/newPostFragment" />
+
+</navigation>

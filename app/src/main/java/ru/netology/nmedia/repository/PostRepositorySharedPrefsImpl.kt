@@ -2,7 +2,6 @@ package ru.netology.nmedia.repository
 
 import android.app.Application
 import android.content.Context
-import android.provider.Settings.Global.putLong
 import androidx.core.content.edit
 import androidx.lifecycle.MutableLiveData
 import com.google.gson.Gson

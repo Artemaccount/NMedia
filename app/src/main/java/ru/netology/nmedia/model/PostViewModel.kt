@@ -9,50 +9,20 @@ import ru.netology.nmedia.repository.PostRepository
 import ru.netology.nmedia.repository.PostRepositoryInFileImpl
 import ru.netology.nmedia.utils.SingleLiveEvent
 
-class PostViewModel(application: Application) : AndroidViewModel(application), PostInteractionListener {
+class PostViewModel(application: Application) : AndroidViewModel(application),
+    PostInteractionListener {
 
     private val repository: PostRepository = PostRepositoryInFileImpl(application)
     val data by repository::data
 
-    private var editedPost = Post(
-        id = 0L,
-        author = "",
-        content = "",
-        published = "",
-        likedByMe = false,
-        video = ""
-    )
-
-    private val empty = Post(
-        id = 0L,
-        author = "",
-        content = "",
-        published = "",
-        likedByMe = false,
-        video = ""
-    )
-
-    private val edited = MutableLiveData(empty)
-
     val shareEvent = SingleLiveEvent<String>()
     val navigateToNewPostScreen = SingleLiveEvent<String>()
-    val navigateToEditPostScreen = SingleLiveEvent<String>()
+    val navigateToEditPostScreen = SingleLiveEvent<Post>()
     val navigateToVideoScreen = SingleLiveEvent<String>()
+    val navigateToPostScreen = SingleLiveEvent<Post>()
 
-    fun changeContent(content: Pair<String?, String?>) {
-        val textContent = content.first
-        val videoContent = content.second
-        if (edited.value?.content == textContent) {
-            return
-        }
-        if (textContent != null) {
-            editedPost = editedPost.copy(content = textContent)
-        }
-        if (videoContent != null) {
-            editedPost = editedPost.copy(video = videoContent)
-        }
-        repository.save(editedPost)
-        this.editedPost = empty
+    fun changeContent(post: Post) {
+        repository.save(post)
     }
 
     fun onnAddNewPostButtonClicked() {
@@ -77,12 +47,15 @@ class PostViewModel(application: Application) : AndroidViewModel(application), P
     }
 
     override fun onEdit(post: Post) {
-        navigateToEditPostScreen.value = post.content
-        editedPost = post
+        navigateToEditPostScreen.value = post
     }
 
     override fun onVideo(post: Post) {
         navigateToVideoScreen.value = post.video
+    }
+
+    override fun onListItem(post: Post) {
+        navigateToPostScreen.value = post
     }
 
     //endregion PostInteractionListener

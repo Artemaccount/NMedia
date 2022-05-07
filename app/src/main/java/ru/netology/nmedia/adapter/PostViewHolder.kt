@@ -46,6 +46,9 @@ class PostViewHolder(
         binding.videoBox.setOnClickListener {
             listener.onVideo(post)
         }
+        binding.postId.setOnClickListener {
+            listener.onListItem(post)
+        }
     }
 
     fun bind(post: Post) {
