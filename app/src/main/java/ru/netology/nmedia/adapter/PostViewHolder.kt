@@ -12,7 +12,7 @@ class PostViewHolder(
     private val listener: PostInteractionListener
 ) : RecyclerView.ViewHolder(binding.root) {
 
-    private lateinit var post: Post
+    lateinit var post: Post
 
     private val popupMenu by lazy {
         PopupMenu(itemView.context, binding.menu).apply {

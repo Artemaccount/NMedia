@@ -16,7 +16,7 @@ import ru.netology.nmedia.dto.Post
 import ru.netology.nmedia.model.PostViewModel
 
 class FeedFragment : Fragment() {
-    private val viewModel: PostViewModel by viewModels()
+    private val viewModel: PostViewModel by viewModels(ownerProducer = ::requireParentFragment)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
