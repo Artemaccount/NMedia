@@ -4,12 +4,17 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
+import com.google.android.gms.tasks.OnSuccessListener
 import ru.netology.nmedia.R
 import ru.netology.nmedia.activity.NewPostFragment.Companion.createArguments
 
+
 class AppActivity : AppCompatActivity(R.layout.app_activity) {
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
+
+
 
         val intent = intent ?: return
 

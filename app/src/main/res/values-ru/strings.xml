@@ -14,4 +14,8 @@
     <string name="ok_button">Кнопка окей</string>
     <string name="add_button">Кнопка добавить</string>
     <string name="enter_video_url">Введите ссылку видео</string>
+    <string name="channel_remote_name">Серверные уведомления</string>
+    <string name="channel_remote_description">Уведомления от удаленного сервера</string>
+    <string name="notification_user_liked">" %1$s поставил лайк посту %2$s"</string>
+    <string name="notification_new_post">%1$s опубликовал новый пост:</string>
 </resources>
